@@ -20,7 +20,7 @@ export default defineComponent({
     const test = () => {
       axios
         .get(
-          "https://check-twitter-api.an.r.appspot.com/v1.1/user_timeline?screen_name=inouuuuuuuu_00&count=2",
+          "https://check-twitter-api.an.r.appspot.com/v1.1/user_timeline?screen_name=inouuuuuuuu_00&count=10",
           {
             headers: {
               Authorization:
