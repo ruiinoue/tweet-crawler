@@ -81,12 +81,29 @@ export const actions = {
         ? `?screen_name=${state.screenName}`
         : "";
     };
+    const sinceId = (): string => {
+      return state.sinceId !== "" ? `&since_id=${state.sinceId}` : "";
+    };
     const count = (): string => {
       return state.count !== "" ? `&count=${state.count}` : "";
     };
+    const maxId = (): string => {
+      return state.maxId !== "" ? `&max_id=${state.maxId}` : "";
+    };
+    const trimUser = (): string => {
+      return state.trimUser !== "" ? `&trim_user=${state.trimUser}` : "";
+    };
+    const excludeReplies = (): string => {
+      return state.excludeReplies !== ""
+        ? `&exclude_replies=${state.excludeReplies}`
+        : "";
+    };
+    const includeRts = (): string => {
+      return state.includeRts !== "" ? `&include_rts=${state.includeRts}` : "";
+    };
 
     const response = await axios.get<Tweet[]>(
-      `https://check-twitter-api.an.r.appspot.com/v1.1/user_timeline${userInfo()}${count()}`,
+      `https://check-twitter-api.an.r.appspot.com/v1.1/user_timeline${userInfo()}${sinceId()}${count()}${maxId()}${trimUser()}${excludeReplies()}${includeRts()}`,
       {
         headers: {
           Authorization:
