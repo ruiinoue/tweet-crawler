@@ -103,11 +103,12 @@ export const actions = {
     };
 
     const response = await axios.get<Tweet[]>(
-      `https://check-twitter-api.an.r.appspot.com/v1.1/user_timeline${userInfo()}${sinceId()}${count()}${maxId()}${trimUser()}${excludeReplies()}${includeRts()}`,
+      `${
+        process.env.VUE_APP_API_BASE_URL
+      }/v1.1/user_timeline${userInfo()}${sinceId()}${count()}${maxId()}${trimUser()}${excludeReplies()}${includeRts()}`,
       {
         headers: {
-          Authorization:
-            "Bearer AAAAAAAAAAAAAAAAAAAAABkvUgEAAAAArn772RqyAWzaV%2BJX62C7pwWVOnE%3DksCVHD2rSbTj94YCrEWWb0Sf0wUOwfhPoytRdfpW5eJw98KIuJ",
+          Authorization: `Bearer ${process.env.VUE_APP_TWITTER_BEARER_TOKEN}`,
         },
       }
     );
