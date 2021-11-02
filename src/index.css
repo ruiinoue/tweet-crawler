@@ -34,16 +34,19 @@
   @apply text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r
 }
 .td-tmp {
-  max-width: 200px;
+  min-width: 200px;
 }
 .td-url {
-  max-width: 300px;
+  max-width: 350px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .td-tip {
-  max-width: 150px;
+  min-width: 180px;
+}
+.td-tip2 {
+  min-width: 80px;
 }
 
 /* tips */

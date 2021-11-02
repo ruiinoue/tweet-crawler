@@ -65,7 +65,7 @@
             <td class="datatable-tbody-tr-td td-tip">
               <StatusTip :status="getTweetStatus(tweet)" />
             </td>
-            <td class="datatable-tbody-tr-td td-tip">
+            <td class="datatable-tbody-tr-td td-tip2">
               <RtsTip
                 :count="
                   tweet.retweeted_status
@@ -74,7 +74,7 @@
                 "
               />
             </td>
-            <td class="datatable-tbody-tr-td td-tip">
+            <td class="datatable-tbody-tr-td td-tip2">
               <LikesTip
                 :count="
                   tweet.retweeted_status
@@ -85,7 +85,9 @@
             </td>
             <td class="datatable-tbody-tr-td td-url">
               <span>
-                {{ `https://twitter.com/${screenName}/status/${tweet.id_str}` }}
+                <BlankLink
+                  :url="`https://twitter.com/${screenName}/status/${tweet.id_str}`"
+                />
               </span>
             </td>
           </tr>
@@ -110,9 +112,10 @@ import { computed, defineComponent } from "vue";
 import { useUserTimeline } from "@/store/modules/userTimeline";
 import { getTweetStatus } from "@/util";
 
-import StatusTip from "@/components/_atoms/StatusTip.vue";
-import RtsTip from "@/components/_atoms/RtsTip.vue";
-import LikesTip from "@/components/_atoms/LikesTip.vue";
+import StatusTip from "@/components/_atoms/tip/StatusTip.vue";
+import RtsTip from "@/components/_atoms/tip/RtsTip.vue";
+import LikesTip from "@/components/_atoms/tip/LikesTip.vue";
+import BlankLink from "@/components/_atoms/BlankLink.vue";
 
 export default defineComponent({
   name: "UserTimelineDataTable",
@@ -121,6 +124,7 @@ export default defineComponent({
     StatusTip,
     RtsTip,
     LikesTip,
+    BlankLink,
   },
 
   setup() {
