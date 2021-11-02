@@ -8,27 +8,27 @@
       集計期間:
       <span v-if="userTimeline.length !== 0">
         {{
-          `${new Date(userTimeline.slice(-1)[0].created_at).getFullYear()}月
-           ${new Date(userTimeline.slice(-1)[0].created_at).getMonth() + 1}月
-           ${new Date(userTimeline.slice(-1)[0].created_at).getDate()}日`
+          `${new Date(userTimeline.slice(-1)[0].created_at).getFullYear()}月${
+            new Date(userTimeline.slice(-1)[0].created_at).getMonth() + 1
+          }月${new Date(userTimeline.slice(-1)[0].created_at).getDate()}日`
         }}
         {{
-          `${new Date(userTimeline.slice(-1)[0].created_at).getHours()}:
-          ${new Date(userTimeline.slice(-1)[0].created_at).getMinutes() + 1}:
-          ${new Date(userTimeline.slice(-1)[0].created_at).getSeconds()}`
+          `${new Date(userTimeline.slice(-1)[0].created_at).getHours()}:${
+            new Date(userTimeline.slice(-1)[0].created_at).getMinutes() + 1
+          }:${new Date(userTimeline.slice(-1)[0].created_at).getSeconds()}`
         }}
       </span>
       〜
       <span v-if="userTimeline.length !== 0">
         {{
-          `${new Date(userTimeline[0].created_at).getFullYear()}月
-          ${new Date(userTimeline[0].created_at).getMonth() + 1}月
-          ${new Date(userTimeline[0].created_at).getDate()}日`
+          `${new Date(userTimeline[0].created_at).getFullYear()}月${
+            new Date(userTimeline[0].created_at).getMonth() + 1
+          }月${new Date(userTimeline[0].created_at).getDate()}日`
         }}
         {{
-          `${new Date(userTimeline[0].created_at).getHours()}:
-          ${new Date(userTimeline[0].created_at).getMinutes() + 1}:
-          ${new Date(userTimeline[0].created_at).getSeconds()}`
+          `${new Date(userTimeline[0].created_at).getHours()}:${
+            new Date(userTimeline[0].created_at).getMinutes() + 1
+          }:${new Date(userTimeline[0].created_at).getSeconds()}`
         }}
       </span>
     </div>
@@ -50,22 +50,22 @@
         </thead>
         <tbody v-if="userTimeline.length > 0">
           <tr v-for="(tweet, key) in userTimeline" :key="key">
-            <td class="datatable-tbody-tr-td">
+            <td class="datatable-tbody-tr-td td-tmp">
               {{
-                `${new Date(tweet.created_at).getFullYear()}月
-                ${new Date(tweet.created_at).getMonth() + 1}月
-                ${new Date(tweet.created_at).getDate()}日`
+                `${new Date(tweet.created_at).getFullYear()}月${
+                  new Date(tweet.created_at).getMonth() + 1
+                }月${new Date(tweet.created_at).getDate()}日`
               }}
               {{
-                `${new Date(tweet.created_at).getHours()}:
-                ${new Date(tweet.created_at).getMinutes() + 1}:
-                ${new Date(tweet.created_at).getSeconds()}`
+                `${new Date(tweet.created_at).getHours()}:${
+                  new Date(tweet.created_at).getMinutes() + 1
+                }:${new Date(tweet.created_at).getSeconds()}`
               }}
             </td>
-            <td class="datatable-tbody-tr-td">
+            <td class="datatable-tbody-tr-td td-tip">
               <StatusTip :status="getTweetStatus(tweet)" />
             </td>
-            <td class="datatable-tbody-tr-td">
+            <td class="datatable-tbody-tr-td td-tip">
               <RtsTip
                 :count="
                   tweet.retweeted_status
@@ -74,7 +74,7 @@
                 "
               />
             </td>
-            <td class="datatable-tbody-tr-td">
+            <td class="datatable-tbody-tr-td td-tip">
               <LikesTip
                 :count="
                   tweet.retweeted_status
@@ -83,7 +83,7 @@
                 "
               />
             </td>
-            <td class="datatable-tbody-tr-td">
+            <td class="datatable-tbody-tr-td td-url">
               <span>
                 {{ `https://twitter.com/${screenName}/status/${tweet.id_str}` }}
               </span>

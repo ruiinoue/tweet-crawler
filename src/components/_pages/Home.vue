@@ -21,9 +21,9 @@ export default defineComponent({
     const userTimelineStore = useUserTimeline();
 
     onMounted(async () => {
-      // userTimelineStore.mutations.setScreenName("inouuuuuuuu_00"); // misaki_srt_love inouuuuuuuu_00
-      // userTimelineStore.mutations.setCount("10");
-      // await userTimelineStore.actions.getUserTimeline();
+      userTimelineStore.mutations.setScreenName("inouuuuuuuu_00"); // misaki_srt_love inouuuuuuuu_00
+      userTimelineStore.mutations.setCount("10");
+      await userTimelineStore.actions.getUserTimeline();
     });
 
     const userTimeline = computed(() => {
