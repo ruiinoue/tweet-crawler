@@ -1,38 +1,7 @@
 <template>
   <div class="container mx-auto px-4 sm:px-8">
     <div class="py-8">
-      <div class="datatable-container">
-        <div class="datatable-inner">
-          <table class="datatable">
-            <thead>
-              <tr>
-                <th class="datatable-thead-tr-th">投稿日</th>
-                <th class="datatable-thead-tr-th">RT数</th>
-                <th class="datatable-thead-tr-th">いいね数</th>
-                <th class="datatable-thead-tr-th">URL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="datatable-tbody-tr-td">2021-11-01 12:23:30</td>
-                <td class="datatable-tbody-tr-td">
-                  <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                    <span class="relative">23</span>
-                  </span>
-                </td>
-                <td class="datatable-tbody-tr-td">
-                  <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                    <span aria-hidden class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-                    <span class="relative">85</span>
-                  </span>
-                </td>
-                <td class="datatable-tbody-tr-td">https://twitter.com</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <UserTimelineDataTable />
     </div>
   </div>
 </template>
@@ -41,15 +10,20 @@
 import { computed, defineComponent, onMounted } from "vue";
 import { useUserTimeline } from "@/store/modules/userTimeline";
 
+import UserTimelineDataTable from "@/components/_organisms/UserTimelineDataTable.vue";
+
 export default defineComponent({
   name: "Home",
+
+  components: { UserTimelineDataTable },
+
   setup() {
     const userTimelineStore = useUserTimeline();
 
     onMounted(async () => {
-      userTimelineStore.mutations.setScreenName("misaki_srt_love");
-      userTimelineStore.mutations.setCount("4");
-      await userTimelineStore.actions.getUserTimeline();
+      // userTimelineStore.mutations.setScreenName("inouuuuuuuu_00"); // misaki_srt_love inouuuuuuuu_00
+      // userTimelineStore.mutations.setCount("10");
+      // await userTimelineStore.actions.getUserTimeline();
     });
 
     const userTimeline = computed(() => {
@@ -61,4 +35,9 @@ export default defineComponent({
     };
   },
 });
+// 残タスク
+// 1. ページネーション
+// 2. リンク遷移用のコンポーネント
+// 3. 検索機能
+// 4. 認証機能
 </script>

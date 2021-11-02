@@ -18,3 +18,38 @@
 .datatable-tbody-tr-td {
   @apply px-5 py-5 border-b border-gray-200 bg-white
 }
+.pagenation-container-forword {
+  @apply px-5 py-2 flex flex-col justify-end items-center
+}
+.pagenation-container {
+  @apply px-5 py-5 bg-white border-t flex flex-col items-center
+}
+.pagenation-inner {
+  @apply inline-flex mt-2
+}
+.pagenation-btn-prev {
+  @apply text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l
+}
+.pagenation-btn-next {
+  @apply text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r
+}
+
+/* tips */
+.rts-tip-container {
+  @apply relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight
+}
+.rts-tip-bg {
+  @apply absolute inset-0 bg-green-200 opacity-50 rounded-full
+}
+.likes-tip-container {
+  @apply relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight
+}
+.likes-tip-bg {
+  @apply absolute inset-0 bg-red-200 opacity-50 rounded-full
+}
+.status-tip-container {
+  @apply relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight
+}
+.status-tip-bg {
+  @apply absolute inset-0 bg-blue-200 opacity-50 rounded-full
+}
