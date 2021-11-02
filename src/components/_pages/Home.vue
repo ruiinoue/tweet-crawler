@@ -1,5 +1,9 @@
 <template>
   <div class="container mx-auto px-4 sm:px-8">
+    <div class="pt-8 px-8">
+      <SearchUserTimeline />
+    </div>
+
     <div class="py-8">
       <UserTimelineDataTable />
     </div>
@@ -10,12 +14,16 @@
 import { computed, defineComponent, onMounted } from "vue";
 import { useUserTimeline } from "@/store/modules/userTimeline";
 
+import SearchUserTimeline from "@/components/_organisms/SearchUserTimeline.vue";
 import UserTimelineDataTable from "@/components/_organisms/UserTimelineDataTable.vue";
 
 export default defineComponent({
   name: "Home",
 
-  components: { UserTimelineDataTable },
+  components: {
+    SearchUserTimeline,
+    UserTimelineDataTable,
+  },
 
   setup() {
     const userTimelineStore = useUserTimeline();
