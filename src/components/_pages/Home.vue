@@ -4,7 +4,12 @@
       <SearchUserTimeline />
     </div>
 
-    <div class="pt-5 pb-8">
+    <div v-if="userTimeline.length > 0" class="px-8 flex justify-center">
+      <button class="btn btn-blue mr-1">フィルター・ソート設定</button>
+      <button class="btn btn-blue ml-1">スプレッドシート設定</button>
+    </div>
+
+    <div class="pt-4 pb-8">
       <UserTimelineDataTable />
     </div>
   </div>
