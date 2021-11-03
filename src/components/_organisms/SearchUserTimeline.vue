@@ -5,7 +5,7 @@
       <input
         type="text"
         name="screenName"
-        class="w-full h-10 px-3 mt-3 mb-2 text-base text-gray-700 placeholder-gray-400 border rounded-lg focus:outline-none"
+        class="form-input"
         placeholder="例）inouuuuuuuu_00"
       />
     </label>
@@ -44,6 +44,10 @@
           </label>
         </div>
       </div>
+    </div>
+
+    <div class="mt-4">
+      <button class="btn btn-blue">検索する</button>
     </div>
   </div>
 </template>

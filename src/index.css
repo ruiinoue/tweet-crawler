@@ -68,3 +68,19 @@
 .status-tip-bg {
   @apply absolute inset-0 bg-blue-200 opacity-50 rounded-full
 }
+
+/* フォーム */
+.form-input {
+  @apply w-full h-10 px-3 mt-1 mb-2 text-base text-gray-700 placeholder-gray-400 border rounded-lg focus:outline-none
+}
+
+/* ボタン */
+.btn {
+  @apply font-bold py-2 px-4 rounded;
+}
+.btn-blue {
+  @apply bg-blue-500 text-white;
+}
+.btn-blue:hover {
+  @apply bg-blue-700;
+}
