@@ -112,7 +112,11 @@ export const actions = {
         },
       }
     );
-    mutations.setUserTimeline(response.data);
+    if (response.data.length !== 0) {
+      mutations.setUserTimeline(response.data);
+    } else {
+      alert("ツイートはありません");
+    }
   },
 };
 

@@ -1,9 +1,7 @@
 <template>
   <div class="pagenation-container-forword">
-    <div class="pagenation-inner">
-      <button class="pagenation-btn-prev">＜ 前</button>
-      <button class="pagenation-btn-next">次 ＞</button>
-    </div>
+    <Pagenation />
+
     <div class="mt-4" v-if="userTimeline.length !== 0">
       集計期間:
       <span v-if="userTimeline.length !== 0">
@@ -96,12 +94,10 @@
       <div class="py-5 text-center bg-white" v-if="userTimeline.length === 0">
         条件を指定してください
       </div>
+
       <!-- ページネーション -->
       <div class="pagenation-container">
-        <div class="pagenation-inner">
-          <button class="pagenation-btn-prev">＜ 前</button>
-          <button class="pagenation-btn-next">次 ＞</button>
-        </div>
+        <Pagenation />
       </div>
     </div>
   </div>
@@ -116,6 +112,7 @@ import StatusTip from "@/components/_atoms/tip/StatusTip.vue";
 import RtsTip from "@/components/_atoms/tip/RtsTip.vue";
 import LikesTip from "@/components/_atoms/tip/LikesTip.vue";
 import BlankLink from "@/components/_atoms/BlankLink.vue";
+import Pagenation from "@/components/_molecules/Pagenation.vue";
 
 export default defineComponent({
   name: "UserTimelineDataTable",
@@ -125,6 +122,7 @@ export default defineComponent({
     RtsTip,
     LikesTip,
     BlankLink,
+    Pagenation,
   },
 
   setup() {
