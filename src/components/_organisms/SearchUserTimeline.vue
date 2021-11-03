@@ -15,6 +15,7 @@
         :max="200"
         :min="1"
       />
+      <Supplement :txt="'※最大で200件取得できます。'" :color="'gray'" />
     </div>
 
     <div class="mt-5">
@@ -24,6 +25,10 @@
         :name="'includeRts'"
         :options="includeRtsOptions"
       />
+      <Supplement
+        :txt="'※取得件数を指定した後に判定されるため、正確な件数を取得したい場合は「含める」を推奨します。'"
+        :color="'gray'"
+      />
     </div>
 
     <div class="mt-5">
@@ -32,6 +37,10 @@
         :label="'リプライを除外するか'"
         :name="'excludeReplies'"
         :options="excludeRepliesOptions"
+      />
+      <Supplement
+        :txt="'※取得件数を指定した後に判定されるため、正確な件数を取得したい場合は「除外しない」を推奨します。'"
+        :color="'gray'"
       />
     </div>
 
@@ -55,12 +64,14 @@ import { useUserTimeline } from "@/store/modules/userTimeline";
 import FormInput from "@/components/_atoms/form/FormInput.vue";
 import FormNumber from "@/components/_atoms/form/FormNumber.vue";
 import FormRadio from "@/components/_atoms/form/FormRadio.vue";
+import Supplement from "@/components/_atoms/Supplement.vue";
 
 export default defineComponent({
   components: {
     FormInput,
     FormNumber,
     FormRadio,
+    Supplement,
   },
 
   setup() {

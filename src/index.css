@@ -71,7 +71,7 @@
 
 /* フォーム */
 .form-input {
-  @apply w-full h-10 px-3 mt-1 mb-2 text-base text-gray-700 placeholder-gray-400 border rounded-lg focus:outline-none
+  @apply w-full h-10 px-3 my-1 text-base text-gray-700 placeholder-gray-400 border rounded-lg focus:outline-none
 }
 
 /* ボタン */
