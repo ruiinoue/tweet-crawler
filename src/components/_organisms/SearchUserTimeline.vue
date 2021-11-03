@@ -7,40 +7,22 @@
       :placeholder="'例）inouuuuuuuu_00'"
     />
 
-    <div class="block mt-4">
-      <span class="text-gray-700">RTを含めるか</span>
-      <div class="mt-2 flex flex-row">
-        <div class="mr-8">
-          <label class="inline-flex items-center">
-            <input v-model="includeRts" type="radio" name="includeRts" :value="false" checked />
-            <span class="ml-2">含める</span>
-          </label>
-        </div>
-        <div>
-          <label class="inline-flex items-center">
-            <input v-model="includeRts" type="radio" name="includeRts" :value="true" />
-            <span class="ml-2">含めない</span>
-          </label>
-        </div>
-      </div>
+    <div class="mt-4">
+      <FormRadio
+        v-model:modelValue="includeRts"
+        :label="'RTを含めるか'"
+        :name="'includeRts'"
+        :options="includeRtsOptions"
+      />
     </div>
 
-    <div class="block mt-4">
-      <span class="text-gray-700">リプライを除外するか</span>
-      <div class="mt-2 flex flex-row">
-        <div class="mr-8">
-          <label class="inline-flex items-center">
-            <input v-model="excludeReplies" type="radio" name="excludeReplies" :value="false" checked />
-            <span class="ml-2">除外する</span>
-          </label>
-        </div>
-        <div>
-          <label class="inline-flex items-center">
-            <input v-model="excludeReplies" type="radio" name="excludeReplies" :value="true" />
-            <span class="ml-2">除外しない</span>
-          </label>
-        </div>
-      </div>
+    <div class="mt-4">
+      <FormRadio
+        v-model:modelValue="excludeReplies"
+        :label="'リプライを除外するか'"
+        :name="'excludeReplies'"
+        :options="excludeRepliesOptions"
+      />
     </div>
 
     <div class="mt-4">
@@ -53,16 +35,28 @@
 import { defineComponent, ref } from "vue";
 
 import FormInput from "@/components/_atoms/form/FormInput.vue";
+import FormRadio from "@/components/_atoms/form/FormRadio.vue";
 
 export default defineComponent({
   components: {
     FormInput,
+    FormRadio,
   },
 
   setup() {
     const screenName = ref<string>("");
-    const includeRts = ref<boolean>(false);
-    const excludeReplies = ref<boolean>(false);
+    const includeRts = ref<"true" | "false">("false");
+    const excludeReplies = ref<"true" | "false">("false");
+
+    const includeRtsOptions: { label: string; value: "true" | "false" }[] = [
+      { label: "含めない", value: "false" },
+      { label: "含める", value: "true" },
+    ];
+    const excludeRepliesOptions: { label: string; value: "true" | "false" }[] =
+      [
+        { label: "除外しない", value: "false" },
+        { label: "除外する", value: "true" },
+      ];
 
     const searchUserTimeline = () => {
       console.log(screenName.value);
@@ -74,6 +68,8 @@ export default defineComponent({
       screenName,
       includeRts,
       excludeReplies,
+      includeRtsOptions,
+      excludeRepliesOptions,
       searchUserTimeline,
     };
   },
