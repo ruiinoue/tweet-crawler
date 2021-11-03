@@ -26,13 +26,14 @@
     </div>
 
     <div class="mt-4">
-      <button class="btn btn-blue" @click="searchUserTimeline">検索する</button>
+      <button class="btn btn-blue" @click="searchUserTimeline">検索</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useUserTimeline } from "@/store/modules/userTimeline";
 
 import FormInput from "@/components/_atoms/form/FormInput.vue";
 import FormRadio from "@/components/_atoms/form/FormRadio.vue";
@@ -44,6 +45,8 @@ export default defineComponent({
   },
 
   setup() {
+    const userTimelineStore = useUserTimeline();
+
     const screenName = ref<string>("");
     const includeRts = ref<"true" | "false">("false");
     const excludeReplies = ref<"true" | "false">("false");
@@ -58,10 +61,11 @@ export default defineComponent({
         { label: "除外する", value: "true" },
       ];
 
-    const searchUserTimeline = () => {
-      console.log(screenName.value);
-      console.log(includeRts.value);
-      console.log(excludeReplies.value);
+    const searchUserTimeline = async () => {
+      userTimelineStore.mutations.setScreenName(screenName.value);
+      userTimelineStore.mutations.setIncludeRts(includeRts.value);
+      userTimelineStore.mutations.setExcludeReplies(excludeReplies.value);
+      await userTimelineStore.actions.getUserTimeline();
     };
 
     return {

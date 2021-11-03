@@ -84,3 +84,6 @@
 .btn-blue:hover {
   @apply bg-blue-700;
 }
+.btn-disabled {
+  @apply bg-gray-400 text-gray-500;
+}

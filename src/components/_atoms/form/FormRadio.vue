@@ -1,6 +1,6 @@
 <template>
   <div class="block mt-4">
-    <span class="text-gray-700">RTを含めるか</span>
+    <span class="text-gray-700">{{ label }}</span>
     <div class="mt-2 flex flex-row">
       <div
         v-for="(option, index) in options"

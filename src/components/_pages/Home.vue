@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted } from "vue";
+import { computed, defineComponent } from "vue";
 import { useUserTimeline } from "@/store/modules/userTimeline";
 
 import SearchUserTimeline from "@/components/_organisms/SearchUserTimeline.vue";
@@ -27,12 +27,6 @@ export default defineComponent({
 
   setup() {
     const userTimelineStore = useUserTimeline();
-
-    onMounted(async () => {
-      // userTimelineStore.mutations.setScreenName("inouuuuuuuu_00"); // misaki_srt_love inouuuuuuuu_00
-      // userTimelineStore.mutations.setCount("10");
-      // await userTimelineStore.actions.getUserTimeline();
-    });
 
     const userTimeline = computed(() => {
       return userTimelineStore.getters.userTimeline();
