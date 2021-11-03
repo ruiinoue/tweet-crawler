@@ -8,6 +8,16 @@
     />
 
     <div class="mt-4">
+      <FormNumber
+        v-model:modelValue.number="count"
+        :label="'取得件数'"
+        :name="'count'"
+        :max="200"
+        :min="1"
+      />
+    </div>
+
+    <div class="mt-5">
       <FormRadio
         v-model:modelValue="includeRts"
         :label="'RTを含めるか'"
@@ -16,7 +26,7 @@
       />
     </div>
 
-    <div class="mt-4">
+    <div class="mt-5">
       <FormRadio
         v-model:modelValue="excludeReplies"
         :label="'リプライを除外するか'"
@@ -25,7 +35,7 @@
       />
     </div>
 
-    <div class="mt-4">
+    <div class="mt-8">
       <button class="btn btn-blue" @click="searchUserTimeline">検索</button>
     </div>
   </div>
@@ -36,11 +46,13 @@ import { defineComponent, ref } from "vue";
 import { useUserTimeline } from "@/store/modules/userTimeline";
 
 import FormInput from "@/components/_atoms/form/FormInput.vue";
+import FormNumber from "@/components/_atoms/form/FormNumber.vue";
 import FormRadio from "@/components/_atoms/form/FormRadio.vue";
 
 export default defineComponent({
   components: {
     FormInput,
+    FormNumber,
     FormRadio,
   },
 
@@ -48,12 +60,13 @@ export default defineComponent({
     const userTimelineStore = useUserTimeline();
 
     const screenName = ref<string>("");
-    const includeRts = ref<"true" | "false">("false");
+    const count = ref<number>(20);
+    const includeRts = ref<"true" | "false">("true");
     const excludeReplies = ref<"true" | "false">("false");
 
     const includeRtsOptions: { label: string; value: "true" | "false" }[] = [
-      { label: "含めない", value: "false" },
       { label: "含める", value: "true" },
+      { label: "含めない", value: "false" },
     ];
     const excludeRepliesOptions: { label: string; value: "true" | "false" }[] =
       [
@@ -63,6 +76,7 @@ export default defineComponent({
 
     const searchUserTimeline = async () => {
       userTimelineStore.mutations.setScreenName(screenName.value);
+      userTimelineStore.mutations.setCount(`${count.value}`);
       userTimelineStore.mutations.setIncludeRts(includeRts.value);
       userTimelineStore.mutations.setExcludeReplies(excludeReplies.value);
       try {
@@ -74,6 +88,7 @@ export default defineComponent({
 
     return {
       screenName,
+      count,
       includeRts,
       excludeReplies,
       includeRtsOptions,
