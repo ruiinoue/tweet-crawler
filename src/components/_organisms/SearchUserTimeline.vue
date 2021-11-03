@@ -36,7 +36,14 @@
     </div>
 
     <div class="mt-8">
-      <button class="btn btn-blue" @click="searchUserTimeline">検索</button>
+      <button
+        class="btn"
+        :class="loading || screenName === '' ? 'btn-disabled' : 'btn-blue'"
+        :disabled="loading || screenName === ''"
+        @click="searchUserTimeline"
+      >
+        検索
+      </button>
     </div>
   </div>
 </template>
@@ -63,6 +70,7 @@ export default defineComponent({
     const count = ref<number>(20);
     const includeRts = ref<"true" | "false">("true");
     const excludeReplies = ref<"true" | "false">("false");
+    const loading = ref<boolean>(false);
 
     const includeRtsOptions: { label: string; value: "true" | "false" }[] = [
       { label: "含める", value: "true" },
@@ -75,6 +83,7 @@ export default defineComponent({
       ];
 
     const searchUserTimeline = async () => {
+      loading.value = true;
       userTimelineStore.mutations.setScreenName(screenName.value);
       userTimelineStore.mutations.setCount(`${count.value}`);
       userTimelineStore.mutations.setIncludeRts(includeRts.value);
@@ -84,6 +93,7 @@ export default defineComponent({
       } catch {
         alert("無効なユーザー名です");
       }
+      loading.value = false;
     };
 
     return {
@@ -91,6 +101,7 @@ export default defineComponent({
       count,
       includeRts,
       excludeReplies,
+      loading,
       includeRtsOptions,
       excludeRepliesOptions,
       searchUserTimeline,
