@@ -65,7 +65,11 @@ export default defineComponent({
       userTimelineStore.mutations.setScreenName(screenName.value);
       userTimelineStore.mutations.setIncludeRts(includeRts.value);
       userTimelineStore.mutations.setExcludeReplies(excludeReplies.value);
-      await userTimelineStore.actions.getUserTimeline();
+      try {
+        await userTimelineStore.actions.getUserTimeline();
+      } catch {
+        alert("無効なユーザー名です");
+      }
     };
 
     return {
