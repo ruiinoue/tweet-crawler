@@ -10,7 +10,7 @@
       :disabled="!userTimeline || !userTimeline.length > 0 || loading"
       @click="getPrevUserTimeline"
     >
-      ＜ 前
+      ＜ 最近ツイート
     </button>
     <button
       class="pagenation-btn-next"
@@ -22,7 +22,7 @@
       :disabled="!userTimeline || !userTimeline.length > 0 || loading"
       @click="getNextUserTimeline"
     >
-      次 ＞
+      過去ツイート ＞
     </button>
   </div>
 </template>

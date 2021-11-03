@@ -45,10 +45,10 @@
   @apply inline-flex mt-2
 }
 .pagenation-btn-prev {
-  @apply text-sm text-gray-800 font-semibold py-2 px-4 rounded-l
+  @apply text-sm text-gray-800 font-semibold py-2 px-4 rounded-l border-r-2
 }
 .pagenation-btn-next {
-  @apply text-sm text-gray-800 font-semibold py-2 px-4 rounded-r
+  @apply text-sm text-gray-800 font-semibold py-2 px-4 rounded-r border-l-2
 }
 .pagenation-btn-color {
   @apply bg-gray-300 hover:bg-gray-400
