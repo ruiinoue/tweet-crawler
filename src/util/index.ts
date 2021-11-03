@@ -19,20 +19,16 @@ export const getTweetStatus = (tweet: Tweet): string => {
     tweet.extended_entities &&
     tweet.extended_entities.media &&
     tweet.extended_entities.media[0].type === "photo" &&
-    tweet.extended_entities.media[0].source_status_id !== null &&
-    tweet.extended_entities.media[0].source_status_id_str !== null &&
-    tweet.extended_entities.media[0].source_user_id !== null &&
-    tweet.extended_entities.media[0].source_user_id_str !== null
+    tweet.extended_entities.media[0].additional_media_info &&
+    tweet.extended_entities.media[0].additional_media_info.source_user
   )
     return "画像引用";
   if (
     tweet.extended_entities &&
     tweet.extended_entities.media &&
     tweet.extended_entities.media[0].type === "video" &&
-    tweet.extended_entities.media[0].source_status_id !== null &&
-    tweet.extended_entities.media[0].source_status_id_str !== null &&
-    tweet.extended_entities.media[0].source_user_id !== null &&
-    tweet.extended_entities.media[0].source_user_id_str !== null
+    tweet.extended_entities.media[0].additional_media_info &&
+    tweet.extended_entities.media[0].additional_media_info.source_user
   )
     return "動画引用";
   if (
