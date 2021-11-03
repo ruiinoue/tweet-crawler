@@ -7,7 +7,7 @@
         :key="index"
         :class="index !== options.length - 1 ? 'mr-8' : ''"
       >
-        <label class="inline-flex items-center">
+        <label class="inline-flex items-center cursor-pointer">
           <input
             type="radio"
             :name="name"
