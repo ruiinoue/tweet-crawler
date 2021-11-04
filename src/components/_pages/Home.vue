@@ -5,7 +5,7 @@
     </div>
 
     <div v-if="userTimeline.length > 0" class="px-8 flex justify-center">
-      <button class="btn btn-blue mr-1">フィルター・ソート設定</button>
+      <FliterSortUserTimeline class="mr-1" />
       <button class="btn btn-blue ml-1">スプレッドシート設定</button>
     </div>
 
@@ -21,6 +21,7 @@ import { useUserTimeline } from "@/store/modules/userTimeline";
 
 import SearchUserTimeline from "@/components/_organisms/SearchUserTimeline.vue";
 import UserTimelineDataTable from "@/components/_organisms/UserTimelineDataTable.vue";
+import FliterSortUserTimeline from "@/components/_organisms/modal/FliterSortUserTimeline.vue";
 
 export default defineComponent({
   name: "Home",
@@ -28,6 +29,7 @@ export default defineComponent({
   components: {
     SearchUserTimeline,
     UserTimelineDataTable,
+    FliterSortUserTimeline,
   },
 
   setup() {
