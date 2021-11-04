@@ -11,8 +11,17 @@
 
       <FormObjectSelect
         v-model:modelValue="fliterStatus"
-        :label="'ツイートのステータス'"
+        :label="'ステータス設定'"
         :options="fliterStatusOptions"
+        class="mb-4"
+      />
+
+      <FormObjectSelects
+        v-model:firstModelValue="sortKey"
+        v-model:secondModelValue="sortOrderby"
+        :label="'ソート設定'"
+        :firstOptions="sortKeyOptions"
+        :secondOptions="sortOrderbyOptions"
         class="mb-4"
       />
 
@@ -30,15 +39,19 @@ import { defineComponent, ref } from "vue";
 import ModalAndTrigrer from "@/components/_molecules/modal/ModalAndTrigrer.vue";
 
 import FormObjectSelect from "@/components/_atoms/form/FormObjectSelect.vue";
+import FormObjectSelects from "@/components/_atoms/form/FormObjectSelects.vue";
 
 export default defineComponent({
   components: {
     ModalAndTrigrer,
     FormObjectSelect,
+    FormObjectSelects,
   },
 
   setup() {
     const fliterStatus = ref<string>("");
+    const sortKey = ref<string>("");
+    const sortOrderby = ref<string>("");
 
     const fliterStatusOptions: { text: string; value: string }[] = [
       { text: "未選択", value: "" },
@@ -51,7 +64,7 @@ export default defineComponent({
       { text: "引用RT", value: "7" },
       { text: "リプライ", value: "8" },
     ];
-    const sortStatusOptions: { text: string; value: string }[] = [
+    const sortKeyOptions: { text: string; value: string }[] = [
       { text: "未選択", value: "" },
       { text: "いいね数", value: "likes" },
       { text: "RT数", value: "rts" },
@@ -64,12 +77,16 @@ export default defineComponent({
 
     const saveFilterSort = () => {
       console.log(fliterStatus.value);
+      console.log(sortKey.value);
+      console.log(sortOrderby.value);
     };
 
     return {
       fliterStatus,
+      sortKey,
+      sortOrderby,
       fliterStatusOptions,
-      sortStatusOptions,
+      sortKeyOptions,
       sortOrderbyOptions,
       saveFilterSort,
     };
