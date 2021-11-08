@@ -7,6 +7,13 @@
       :placeholder="'例）inouuuuuuuu_00'"
     />
 
+    <FormInput
+      v-model:modelValue="maxId"
+      :label="'このツイートID以前のツイートを取得'"
+      :name="'maxId'"
+      :placeholder="'例）123456'"
+    />
+
     <div class="mt-4">
       <FormNumber
         v-model:modelValue.number="count"
@@ -79,6 +86,7 @@ export default defineComponent({
 
     const screenName = ref<string>("");
     const count = ref<number>(20);
+    const maxId = ref<string>("");
     const includeRts = ref<"true" | "false">("true");
     const excludeReplies = ref<"true" | "false">("false");
     const loading = ref<boolean>(false);
@@ -97,6 +105,7 @@ export default defineComponent({
       loading.value = true;
       userTimelineStore.mutations.setScreenName(screenName.value);
       userTimelineStore.mutations.setCount(`${count.value}`);
+      if (maxId.value !== "") userTimelineStore.mutations.setMaxId(maxId.value);
       userTimelineStore.mutations.setIncludeRts(includeRts.value);
       userTimelineStore.mutations.setExcludeReplies(excludeReplies.value);
       try {
@@ -110,6 +119,7 @@ export default defineComponent({
     return {
       screenName,
       count,
+      maxId,
       includeRts,
       excludeReplies,
       loading,
